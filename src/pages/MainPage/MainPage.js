@@ -1,13 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { changeTitleAction } from "../../redux/actions";
 
 export const MainPage = () => {
-  const mainTitle = useSelector((state) => state.title);
+  const mainTitle = useSelector((state) => state.titleReducer.title);
   const dispatch = useDispatch();
   const changeTitle = () => {
-    dispatch({
-      type: "CHANGE_TITLE",
-    });
+    dispatch(changeTitleAction());
   };
   return (
     <div>

@@ -1,17 +1,22 @@
+import { useState } from "react";
 import "./App.css";
-import { ChangeTitle } from "./components/ChangeTitle";
-import AboutPage from "./pages/AboutPage/AboutPage";
-import { ContactsPage } from "./pages/ContactsPage/ContactsPage";
-import { MainPage } from "./pages/MainPage/MainPage";
+import AddTask from "./components/AddTask";
+import CategoryFilter from "./components/CategoryFilter";
+import TaskList from "./components/TaskList";
+
+import { TodoList } from "./components/TodoList";
 
 function App() {
+  const [filter, setFilter] = useState("");
+
   return (
     <div className="App">
-      {/* <MainPage /> */}
-      {/* <h1>--------------</h1> */}
-      {/* <AboutPage /> */}
-      {/* <ChangeTitle /> */}
-      <ContactsPage />
+      <div className="app-container">
+        <h1>Task Manager</h1>
+        <AddTask />
+        <CategoryFilter onChange={setFilter} />
+        <TaskList filter={filter} />
+      </div>
     </div>
   );
 }

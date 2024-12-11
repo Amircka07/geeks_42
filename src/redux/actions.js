@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import { types } from "./types";
+import axios from "axios";
 
 export function changeTitleAction() {
   return {
@@ -33,3 +35,73 @@ export const Delete = (id) => ({
   type: types.DELETE,
   payload: id,
 });
+
+export function asynFunctionAction() {
+  return function () {
+    setTimeout(() => {
+      alert("Hello");
+    }, 2000);
+  };
+}
+
+function getUserAction(users) {
+  return {
+    type: "USER",
+    payload: users,
+  };
+}
+
+export function fetchUsersAction() {
+  return async function (dispatch) {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data = await response.json();
+    dispatch(getUserAction(data));
+  };
+}
+
+export const searchUserRequest = () => ({
+  type: types.SEARCH_USERS_REQUEST,
+});
+
+export const searchUsersSucces = (users) => ({
+  type: types.SEARCH_USERS_SUCCES,
+  payload: users,
+});
+
+export const searchUsersFailure = (error) => ({
+  type: types.SEARCH_USERS_FAILURE,
+  payload: error,
+});
+
+export const fetchUsers = (query) => async (dispatch) => {
+  dispatch(searchUserRequest());
+  try {
+    const response = await axios.get(
+      `https://api.github.com/search/users?q=${query}`
+    );
+    dispatch(searchUsersSucces(response.data.items));
+  } catch (error) {
+    dispatch(searchUsersFailure(error.message));
+  }
+};
+
+//DZ
+function forAxios(user) {
+  return {
+    type: types.FOR_AXIOS,
+    payload: user,
+  };
+}
+
+export function axiosUserAction() {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        "https://rickandmortyapi.com/api/character"
+      );
+      dispatch(forAxios(response.data.results));
+    } catch (error) {
+      console.error("Ошибка при запросе:", error);
+    }
+  };
+}

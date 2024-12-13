@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-import AddTask from "./components/AddTask";
 import CategoryFilter from "./components/CategoryFilter";
 import TaskList from "./components/TaskList";
 
@@ -10,6 +9,7 @@ import { UserPage } from "./pages/userPage/UserPage";
 import SearchBar from "./components/SearchBar";
 import { UserList } from "./components/UserList";
 import { RickandPage } from "./pages/RickandPage";
+import { RickAndMortyPages } from "./pages/RickAndMortyPages";
 
 function App() {
   const [filter, setFilter] = useState("");
@@ -26,7 +26,8 @@ function App() {
         {/* <h1>GitHub User Search</h1> */}
         {/* <SearchBar />
         <UserList /> */}
-        <RickandPage />
+        {/* <RickandPage /> */}
+        <RickAndMortyPages />
       </div>
     </div>
   );

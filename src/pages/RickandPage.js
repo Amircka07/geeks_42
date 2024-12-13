@@ -16,7 +16,7 @@ export const RickandPage = () => {
   return (
     <div className="rick">
       {user.map((users) => (
-        <Rickand info={users} />
+        <Rickand key={users.id} info={users} />
       ))}
     </div>
   );

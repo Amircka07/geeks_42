@@ -4,6 +4,7 @@ import contactsReducer from "./contactsReducer";
 import taskReducer, { categoriesReducer } from "./taskReducer";
 import usersReducer from "../usersReducer";
 import RickandReducer from "../RickandReducer";
+import { characterReducer } from "./CharacterReducer/CharacterReducer";
 
 export const rootReducer = combineReducers({
   titleReducer,
@@ -12,4 +13,5 @@ export const rootReducer = combineReducers({
   categoriesReducer,
   usersReducer,
   RickandReducer,
+  characterReducer,
 });

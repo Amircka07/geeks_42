@@ -48,7 +48,7 @@
   gap: 10px;
   margin-bottom: 20px;
 } */
-.userCard {
+/* .userCard {
   width: 200px;
   height: 250px;
   padding: 10px;
@@ -120,4 +120,11 @@ button:hover {
 .IMAGE {
   height: 80px;
   width: 80px;
+} */
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px;
 }

@@ -5,6 +5,8 @@ import taskReducer, { categoriesReducer } from "./taskReducer";
 import usersReducer from "../usersReducer";
 import RickandReducer from "../RickandReducer";
 import { characterReducer } from "./CharacterReducer/CharacterReducer";
+import { catReducer } from "./CatReducer";
+import { fiveReducer } from "./FiveReducer";
 
 export const rootReducer = combineReducers({
   titleReducer,
@@ -14,4 +16,6 @@ export const rootReducer = combineReducers({
   usersReducer,
   RickandReducer,
   characterReducer,
+  catReducer,
+  fiveReducer,
 });

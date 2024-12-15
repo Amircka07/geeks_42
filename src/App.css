@@ -37,11 +37,11 @@
   }
 }
 
-.app-container {
+/* .app-container {
   margin: 20px auto;
   max-width: 600px;
   text-align: center;
-}
+} */
 
 /* .add-task-form {
   display: flex;
@@ -121,10 +121,18 @@ button:hover {
   height: 80px;
   width: 80px;
 } */
-
+/* 
 .character-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  gap: 60px;
   padding: 16px;
+} */
+
+.container {
+  margin-top: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
 }

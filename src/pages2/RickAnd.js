@@ -13,14 +13,15 @@ export const RickAndMorty = () => {
       <Button onClick={() => dispatch(fetchRickAndMorty())}>
         Get Character
       </Button>
-      {rickAndMorty && (
-        <div className="mt-3">
-          <h3>{rickAndMorty.name}</h3>
-          <Image src={rickAndMorty.image} rounded fluid />
-          <p>Species: {rickAndMorty.species}</p>
-          <p>Status: {rickAndMorty.status}</p>
-        </div>
-      )}
+      {rickAndMorty &&
+        rickAndMorty.map((rick) => (
+          <div>
+            <h3>{rick.name}</h3>
+            <Image src={rick.image} />
+            <p>Species: {rick.species}</p>
+            <p>Status: {rick.status}</p>
+          </div>
+        ))}
     </div>
   );
 };

@@ -175,6 +175,9 @@ export const fetchJoke = () => async (dispatch) => {
 };
 
 //
+//
+//
+//
 
 export const fetchPokemonSuccess = (pokemons) => ({
   type: types.FETCH_POKEMON,
@@ -183,18 +186,25 @@ export const fetchPokemonSuccess = (pokemons) => ({
 
 export const fetchPokemon = () => async (dispatch) => {
   try {
-    const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
-    const pokemons = response.data.results.map((pokemon, index) => ({
+    const response = await axios.get(
+      "https://pokeapi.co/api/v2/pokemon?limit=5"
+    );
+    const results = response.data.results;
+    const pokemonList = results.map((pokemon, index) => ({
       name: pokemon.name,
-      url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
         index + 1
       }.png`,
     }));
-    dispatch(fetchPokemonSuccess(pokemons));
+
+    dispatch(fetchPokemonSuccess(pokemonList));
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching Pokémon:", error);
   }
 };
+
+//
+//
 
 export const fetchAnimeSuccess = (anime) => ({
   type: types.FETCH_ANIME,
@@ -203,18 +213,17 @@ export const fetchAnimeSuccess = (anime) => ({
 
 export const fetchAnime = () => async (dispatch) => {
   try {
-    const response = await axios.get(
-      "https://api.jikan.moe/v4/anime?q=Attack%20on%20Titan"
-    );
-    const anime = response.data.data.map((item) => ({
-      title: item.title,
-      image: item.images.jpg.image_url,
-    }));
+    const response = await axios.get("https://api.jikan.moe/v4/anime?q=anime");
+    const anime = response.data.data;
     dispatch(fetchAnimeSuccess(anime));
   } catch (error) {
     console.error(error);
   }
 };
+
+//
+//
+
 export const fetchRickAndMortySuccess = (character) => ({
   type: types.FETCH_RICK_AND_MORTY,
   payload: character,
@@ -222,21 +231,19 @@ export const fetchRickAndMortySuccess = (character) => ({
 
 export const fetchRickAndMorty = () => async (dispatch) => {
   try {
-    const randomId = Math.floor(Math.random() * 826) + 1;
     const response = await axios.get(
-      `https://rickandmortyapi.com/api/character/${randomId}`
+      "https://rickandmortyapi.com/api/character"
     );
-    const character = {
-      name: response.data.name,
-      image: response.data.image,
-      species: response.data.species,
-      status: response.data.status,
-    };
-    dispatch(fetchRickAndMortySuccess(character));
+    const char = response.data.results;
+    dispatch(fetchRickAndMortySuccess(char));
   } catch (error) {
     console.error("Error fetching Rick and Morty character:", error);
   }
 };
+
+//
+//
+
 export const fetchHarrySuccess = (har) => ({
   type: types.FETCH_HARRY_POTTER,
   payload: har,
@@ -247,42 +254,28 @@ export const fetchHarryPotter = () => async (dispatch) => {
     const response = await axios.get(
       "https://hp-api.onrender.com/api/characters/house/gryffindor"
     );
-    const harryPotter = response.data.map((character) => ({
-      name: character.name,
-      image: character.image || "https://via.placeholder.com/150",
-    }));
-    dispatch(fetchHarrySuccess(harryPotter));
+    dispatch(fetchHarrySuccess(response.data));
   } catch (error) {
     console.error(error);
   }
 };
 
-export const fetchMovieSuccess = (movie) => ({
-  type: types.FETCH_MOVIE,
-  payload: movie,
-});
+//
+//
 
-export const fetchBookSuccess = (book) => ({
+export const fetchBookSuccess = (books) => ({
   type: types.FETCH_BOOK,
-  payload: book,
+  payload: books,
 });
 
 export const fetchBook = () => async (dispatch) => {
   try {
-    const keywords = ["fiction", "fantasy", "technology", "history", "science"];
-    const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)];
     const response = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=${randomKeyword}&maxResults=1`
+      `https://www.googleapis.com/books/v1/volumes?q=books`
     );
 
-    const bookData = response.data.items[0].volumeInfo;
-    const book = {
-      title: bookData.title,
-      authors: bookData.authors ? bookData.authors.join(", ") : "Unknown",
-      description: bookData.description || "No description available.",
-      thumbnail: bookData.imageLinks?.thumbnail,
-    };
-    dispatch(fetchBookSuccess(book));
+    const bookData = response.data.items;
+    dispatch(fetchBookSuccess(bookData));
   } catch (error) {
     console.error("Error fetching book data:", error);
   }

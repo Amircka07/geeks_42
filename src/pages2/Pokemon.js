@@ -14,7 +14,7 @@ export const Pokemon = () => {
         pokemon.map((p, index) => (
           <div key={index}>
             <h3>{p.name}</h3>
-            <Image src={p.url} alt={p.name} />
+            <Image src={p.image} alt={p.name} />
           </div>
         ))}
     </div>

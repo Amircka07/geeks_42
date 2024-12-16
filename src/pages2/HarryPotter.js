@@ -8,10 +8,10 @@ export const HarryPotter = () => {
   return (
     <div className="text-center">
       <h2>Harry Potter</h2>
-      <Button onClick={() => dispatch(fetchHarryPotter())}>Get Add Cat</Button>
+      <Button onClick={() => dispatch(fetchHarryPotter())}>Get Add</Button>
       {harryPotter &&
-        harryPotter.map((character, index) => (
-          <div key={index}>
+        harryPotter.map((character) => (
+          <div>
             <h3>{character.name}</h3>
             <Image src={character.image} alt={character.name} />
           </div>

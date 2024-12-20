@@ -1,17 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-import CategoryFilter from "./components/CategoryFilter";
-import TaskList from "./components/TaskList";
-import { TodoList } from "./components/TodoList";
-import { ChangeTitle } from "./components/ChangeTitle";
-import { UserPage } from "./pages/userPage/UserPage";
-import SearchBar from "./components/SearchBar";
-import { UserList } from "./components/UserList";
-import { RickandPage } from "./pages/RickandPage";
-import { RickAndMortyPages } from "./pages/RickAndMortyPages";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { UserRegisterPage } from "./pages2/UserRegisterPage/UserRegisterPage";
-import { UserListPge } from "./pages2/usersListPage/UserListPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CatPage } from "./pages2/CatPage";
 import { JokePage } from "./pages2/JokePage";
@@ -23,13 +11,20 @@ import { Anime } from "./pages2/Anime";
 import { RickAndMorty } from "./pages2/RickAnd";
 import { Book } from "./pages2/Book";
 import { HarryPotter } from "./pages2/HarryPotter";
+import { Ax } from "./pages2/Ax";
+import { MainPage } from "./page/MainPage/MainPage";
+import { UserPage } from "./page/userPage/UserPage";
+import { Count } from "./page/Count/Count";
 
 function App() {
   // const [filter, setFilter] = useState("");
 
   return (
-    /*<div className="App">
-      <div className="app-container">
+    <div className="App">
+      {/* <MainPage /> */}
+      {/* <UserPage /> */}
+      <Count />
+      {/* /*<div className="app-container">
         <h1>Task Manager</h1>
         <AddTask />
         <CategoryFilter onChange={setFilter} />
@@ -41,27 +36,28 @@ function App() {
         <UserList /> 
          <RickandPage /> 
          <RickAndMortyPages />
-      </div>
-    </div>*/
-    <BrowserRouter>
-      {/* <Menu /> */}
-      <AppNavBar />
-      <div className="container mt-4">
-        <Routes>
-          {/* <Route index element={<UserRegisterPage />} />
-          <Route path="/users" element={<UserListPge />} /> */}
-          <Route path="/" element={<AboutPage />} />
-          {/* <Route path="/cats" element={<CatPage />} />
-          <Route path="/jokes" element={<JokePage />} /> */}
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/pokemon" element={<Pokemon />} />
-          <Route path="/anime" element={<Anime />} />
-          <Route path="/rick_and_morty" element={<RickAndMorty />} />
-          <Route path="/book" element={<Book />} />
-          <Route path="/harry_potter" element={<HarryPotter />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+      </div> */}
+    </div> /*
+    // <BrowserRouter>
+    //   {/* <Menu /> */
+    //   <AppNavBar />
+    //   <div className="container mt-4">
+    //     <Routes>
+    //       {/* <Route index element={<UserRegisterPage />} />
+    //       <Route path="/users" element={<UserListPge />} /> */}
+    //       <Route path="/" element={<AboutPage />} />
+    //       {/* <Route path="/cats" element={<CatPage />} />
+    //       <Route path="/jokes" element={<JokePage />} /> */}
+    //       <Route path="/about" element={<AboutPage />} />
+    //       <Route path="/pokemon" element={<Pokemon />} />
+    //       <Route path="/anime" element={<Anime />} />
+    //       <Route path="/rick_and_morty" element={<RickAndMorty />} />
+    //       <Route path="/book" element={<Book />} />
+    //       <Route path="/harry_potter" element={<HarryPotter />} />
+    //       <Route path="/ax" element={<Ax />} />
+    //     </Routes>
+    //   </div>
+    // </BrowserRouter>
   );
 }
 export default App;

@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Image } from "react-bootstrap";
 import { fetchBook } from "../redux/actions";
@@ -6,7 +5,6 @@ import { fetchBook } from "../redux/actions";
 export const Book = () => {
   const book = useSelector((state) => state.fiveReducer.book);
   const dispatch = useDispatch();
-  console.log(book);
 
   return (
     <div className="text-center">

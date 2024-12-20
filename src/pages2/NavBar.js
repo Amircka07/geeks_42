@@ -34,6 +34,10 @@ export const AppNavBar = () => {
         <Nav.Link as={NavLink} to="/harry_potter">
           Harry Potter
         </Nav.Link>
+
+        <Nav.Link as={NavLink} to="/ax">
+          Ax
+        </Nav.Link>
       </Nav>
     </Navbar>
   );

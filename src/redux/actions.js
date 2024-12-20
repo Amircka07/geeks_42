@@ -213,7 +213,9 @@ export const fetchAnimeSuccess = (anime) => ({
 
 export const fetchAnime = () => async (dispatch) => {
   try {
-    const response = await axios.get("https://api.jikan.moe/v4/anime?q=anime");
+    const response = await axios.get(
+      "https://api.jikan.moe/v4/anime?q=Attack%20on%20Titan"
+    );
     const anime = response.data.data;
     dispatch(fetchAnimeSuccess(anime));
   } catch (error) {
@@ -278,5 +280,22 @@ export const fetchBook = () => async (dispatch) => {
     dispatch(fetchBookSuccess(bookData));
   } catch (error) {
     console.error("Error fetching book data:", error);
+  }
+};
+
+const axiosFetchSuccess = (ax) => ({
+  type: types.AXIOS_FETCH_SUCCESS,
+  payload: ax,
+});
+
+export const axiosFetch = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://ghibliapi.vercel.app/films/58611129-2dbc-4a81-a72f-77ddfc1b1b49`
+    );
+    const vers = response.data;
+    dispatch(axiosFetchSuccess([vers]));
+  } catch (error) {
+    console.error(error);
   }
 };

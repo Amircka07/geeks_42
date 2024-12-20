@@ -13,7 +13,7 @@ export const HarryPotter = () => {
         harryPotter.map((character) => (
           <div>
             <h3>{character.name}</h3>
-            <Image src={character.image} alt={character.name} />
+            <Image src={character.image} />
           </div>
         ))}
     </div>

@@ -5,6 +5,7 @@ const initialState = {
   rickAndMorty: null,
   book: [],
   harryPotter: "",
+  ax: [],
 };
 
 export const fiveReducer = (state = initialState, action) => {
@@ -19,6 +20,8 @@ export const fiveReducer = (state = initialState, action) => {
       return { ...state, harryPotter: action.payload };
     case types.FETCH_BOOK:
       return { ...state, book: action.payload };
+    case types.AXIOS_FETCH_SUCCESS:
+      return { ...state, ax: action.payload };
     default:
       return state;
   }
